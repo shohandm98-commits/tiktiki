@@ -69,3 +69,5 @@ For local Tiktiki, the app redirects back to `http://localhost:3000` after Googl
 
 ### If upload is rejected
 Run the SQL file again so the `videos` bucket and Storage RLS policies are created. Also make sure the signed-in account exists in `auth.users`.
+## Deployment note
+- Next.js is pinned to `15.5.24`, a patched Maintenance LTS release. If Vercel previously warned about Next.js `15.5.0`, uploading this version and redeploying removes that outdated dependency warning.
