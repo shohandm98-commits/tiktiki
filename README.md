@@ -55,3 +55,17 @@ In Supabase → Authentication → Providers → Google, enable Google and enter
 `https://YOUR-PROJECT.supabase.co/auth/v1/callback`
 
 For local Tiktiki, the app redirects back to `http://localhost:3000` after Google authentication.
+
+
+## Real Video Upload + Feed
+
+1. In Supabase open **SQL Editor** and run `supabase-schema.sql` once.
+2. Make sure `.env.local` contains `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+3. Run `npm install` then `npm run dev`.
+4. Sign in to Tiktiki.
+5. Press **Create**, choose a video, write a caption, and press **Publish video**.
+6. The video is uploaded to the public `videos` Storage bucket and a row is created in the `videos` table.
+7. The home feed reads the newest rows from the online Supabase database and plays the stored video URL.
+
+### If upload is rejected
+Run the SQL file again so the `videos` bucket and Storage RLS policies are created. Also make sure the signed-in account exists in `auth.users`.
